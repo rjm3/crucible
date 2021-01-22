@@ -1,4 +1,4 @@
-$funk::bind["TEST","1"] = "CAST fireball";
+$funk::bind["TEST","1"] = "CAST thorn1";
 $funk::bind["TEST","2"] = "#cleave";
 $funk::bind["TEST","g"] = "#gear";
 $funk::bind["TEST","h"] = "USE 999HealthPotion";
