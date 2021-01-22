@@ -1,0 +1,28 @@
+Trorbs v2
+
+Tribes 1.8 from disk updated to 1.11 with patch.
+NOT the bastardized broken version VUG pushed out to promote T:V
+
+Enhancements:
+Jump+Jet+Ski script by Plasmatic
+All community masters added. 
+
+Run Tribes.exe for standard 1.11 Tribes - needs mem.dll for Vista, can be ran naked.
+Run Tribes130-v-ws.exe for 1.30 Tribes -Vista + Wide screen fix
+
+This is intended to be a fresh Tribes ready to play or modify.
+Files added:
+tribes130-v-ws.exe (1.30 Tribes, Vista fix, and wide screen fix)
+mem.dll (Vista fix for stock Tribes)
+config\autoexec.cs (Loads Jump+Jet+Ski script)
+config\Plasmatic_Ski.cs (Jump+Jet+Ski script)
+config\Plasmatic_Ski.txt (Jump+Jet+Ski script information)
+config\wsfix.cs	(settings for the wide screen fix)
+File Changed:
+config\ServerPrefs.cs (Community masters added)
+config\ServerPrefs.cs.bak (Original ServerPrefs file)
+
+Visit www.annihilation.info for more information than you'll ever need.
+-Plasmatic 
+
+

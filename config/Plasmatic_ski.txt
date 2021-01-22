@@ -1,0 +1,54 @@
+ Jump/ Jet/ Ski script by Plasmatic
+ http://www.annihilation.info/plasmatic
+
+ Script taps jump repeatedly when the spacebar is held down. Jumps whenever Jetting to get additional height -the same as tapping space bar when first jetting. Includes a weapon changer for scroll mice (change weapons with the scroll button) that may or may not work for you.
+
+ Compatable with everything or stand alone. Your choice.
+
+ Lazy install: Unzip directly into your:
+C:\Dynamix\TRIBES\config directory. This will overwrite any existing autoexec.cs (not present in fresh installs).
+
+ Or: Drop Plasmatic_Ski.cs into Tribes\config and add:
+exec(Plasmatic_Ski); 
+to Tribes\config\autoexec.cs (open with notepad). If you don't have an autoexec.cs, follow the install instructions above.
+
+ Advanced: You may also copy the code directly from Plasmatic_Ski.cs or this file, and add it directly to autoexec.cs
+
+
+
+ Enjoy.
+ -Plasmatic
+
+
+ ? This script checks for a mounted weapon before jumping on jetting to fudge around accidently jumping out of vehicles while flying. If you're a passenger, you'll jump off if you jet. You've been warned.
+
+ ?? If you have problems, while in Tribes hit ~ to bring up the console, and type: exec(autoexec); The console should respond with "Executing Plasmatic_Ski.cs." If it doesn't, make sure the file: Plasmatic_Ski.cs exists in your config directory, and the line:
+exec(Plasmatic_Ski); is in your autoexec.cs. Advanced installers get lost.. ;)
+
+ ??? Visit http://www.annihilation.info/ and say hello in the forums.
+
+
+The complete code is below if you're lazy like me...
+
+//===========================================================
+editActionMap("playMap.sae");
+
+BindCommand(mouse0, make, button1, TO, "Plas::Jet();");
+bindAction(mouse0, break, button1, TO, IDACTION_JET, 0.000000);
+function Plas::Jet()
+{
+	if(getMountedItem(0) != -1)	//check weapon slot -no jump jet with no weapon
+		postAction(2048, IDACTION_MOVEUP, 1);
+	postAction(2048,IDACTION_JET, 1.000000);	
+}
+bindCommand(keyboard0, make, "space", TO, "$Plas::skiing = true;Plas::Ski(true);");
+bindCommand(keyboard0, break, "space", TO, "$Plas::skiing = false;");
+function Plas::Ski()
+{
+	if($Plas::skiing)
+	{
+		postAction(2048, IDACTION_MOVEUP, 1);
+		schedule("Plas::Ski();",0.05);	//jump jump jump	
+	}
+}
+BindCommand("mouse0", "zaxis", TO, "nextWeapon();");	//scroll weapons

@@ -1,0 +1,12 @@
+$PCFG::CurrentPlayer = "0";
+$PCFG::Gender = "FEMALE";
+$PCFG::Gender0 = "FEMALE";
+$PCFG::Info = "TEST";
+$PCFG::Info0 = "TEST";
+$PCFG::LastPlayer = "0";
+$PCFG::Name = "TEST";
+$PCFG::Name0 = "TEST";
+$PCFG::SkinBase = "base";
+$PCFG::SkinBase0 = "base";
+$PCFG::Voice = "female1";
+$PCFG::Voice0 = "female1";
