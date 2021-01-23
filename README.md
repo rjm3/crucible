@@ -2,10 +2,10 @@
 
 ## **_Tribes Crucible RPG_**
 
-A Tribes Total Conversion created by rjm3
+A Tribes Total Conversion created by **_rjm3_**
 
-Much thanks to Draggun, Road-dogg, Bovidi, Scooby and Phantom for many additions, and of course the original TRPG Team
+Much thanks to **_Draggun_**, **_Road-dogg_**, **_Bovidi_**, **_Scooby_** and **_Phantom_** for many additions, and of course the original TRPG Team
 
-_I moved Dragguns in Depth play guide to guide.html_
+_I moved Dragguns in Depth Play Guide to the wiki_
 
 Check the **_wiki_** near the top of this page for more information on playing Crucible
