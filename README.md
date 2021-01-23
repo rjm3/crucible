@@ -1,6 +1,6 @@
 # crucible
 
-_Tribes Crucible RPG_
+## **_Tribes Crucible RPG_**
 
 A Tribes Total Conversion created by rjm3
 
