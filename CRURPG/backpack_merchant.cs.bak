@@ -291,9 +291,6 @@ function BackpackBuy(%id)
 					if ($BPItem[%item,$BPName] == "Corroded Sword") %flag = true;
 					if ($BPItem[%item,$BPName] == "Corroded Spike") %flag = true;
 					if ($BPItem[%item,$BPName] == "Twig Wand") %flag = true;
-					if ($BPItem[%item,$BPName] == "Driftwood Mace") %flag = true;
-					if ($BPItem[%item,$BPName] == "Pine Bow") %flag = true;
-					if ($BPItem[%item,$BPName] == "Oldwood Staff") %flag = true;
 					if (%flag != true)
 						RemoveFromBackpack(%area,%item,(%delta * -1),0,%area,0,1);
 					MoneySound(%id);

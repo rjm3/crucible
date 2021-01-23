@@ -726,10 +726,8 @@ function DoRemort(%TrueClientId)
 		Item::SetVelocity(%obj,"0 0 0");
 		GameBase::SetPosition(%obj,%pos);
 		GameBase::SetRotation(%obj,%rot);
-		%sound = "RespawnB";
-		schedule("PlaySound("@%sound@",\""@GameBase::getPosition(%TrueClientId)@"\");",0.1);
 		%sound = "RespawnC";
-		schedule("PlaySound("@%sound@",\""@GameBase::getPosition(%TrueClientId)@"\");",0.6);
+		schedule("PlaySound("@%sound@",\""@GameBase::getPosition(%TrueClientId)@"\");",0.1);
 		RefreshAll(%TrueClientId);
 		Client::sendMessage(%TrueClientId,3,"Welcome to Remort Level " @ fetchData(%TrueClientId,"RemortStep") @ "!");
 }

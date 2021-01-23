@@ -5,7 +5,7 @@ $CREATETIERNOFLUX["SPELLCRIT"] = 1;
 function CreateTierWeapons(%plan,%name,%material,%damage,%perc,%damageflux,%damagetype,%main,%implicit,%critchance,%critdamage,%req,%x,%atk,%def,%ico,%delay,%twohand,%desc,%loot,%cl)
 {
 	// Hardcoded the damage flux here?
-	%damageflux = 0.049;
+	%damageflux = 0.038;
 	for (%i = 0; %i <= 6; %i++) {
 		%magic = 0;
 		%nn = "";

@@ -81,7 +81,37 @@ function remoteSay(%clientId, %team, %message, %senderName)
 	if (%isCommand) {
 		//------------------------------------------------------------------------------------------------------------------
 		if (%w1 == "#remort") {
-			DoRemort(%TrueClientId);
+			%lvl = fetchData(%TrueClientId, "LVL");
+			%remort = fetchData(%TrueClientId, "RemortStep");
+			%need = 230 + %remort;
+			if (%lvl < %need) {
+				Client::SendMessage(%TrueClientId,0,"You must be LVL " @ %need @ " or higher to remort.");
+				return;
+			}
+			%naked = true;
+			for (%x = 1; %x <= 30; %x++) {
+				%wear = GetCurrentWear(%TrueClientId,%x);
+				if (%wear != "none")
+					%naked = false;
+			}
+			if (%naked == false) {
+				Client::SendMessage(%TrueClientId,0,"You must have no gear equiped to remort.");
+				return;
+			}
+			if ($CURRENTCRUMAP != "FOREST") {
+				Client::SendMessage(%TrueClientId,0,"You must be on the Forest World to remort.");
+				return;
+			}
+			DeathEndSpells(%TrueClientId);
+			for (%si = 1; %si <= 51; %si++)
+				$PlayerSkill[%TrueClientId,%si] = 1;
+			%race = fetchData(%TrueClientId,"CruRACE");
+			$PlayerSkill[%TrueClientId,$SkillStrength] = $AbilityMultiplier[%race, $SkillStrength];
+			$PlayerSkill[%TrueClientId,$SkillDexterity] = $AbilityMultiplier[%race, $SkillDexterity];
+			$PlayerSkill[%TrueClientId,$SkillIntelligence] = $AbilityMultiplier[%race, $SkillIntelligence];
+			storeData(%TrueClientId, "SPcredits", 70);
+			%remort++;
+			storeData(%TrueClientId, "RemortStep", %remort);
 		}
 		//------------------------------------------------------------------------------------------------------------------
 		if (%w1 == "#resetmyskills") {
