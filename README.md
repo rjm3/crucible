@@ -8,4 +8,4 @@ Much thanks to Draggun, Road-dogg, Bovidi, Scooby and Phantom for many additions
 
 _I moved Dragguns in Depth play guide to guide.html_
 
-Check the **wiki** near the top of this page for more information on playing Crucible
+Check the **_wiki_** near the top of this page for more information on playing Crucible
