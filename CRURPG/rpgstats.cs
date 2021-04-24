@@ -54,7 +54,7 @@ function fetchData(%clientId,%type)
 		%a *= $RaceHPMulti[fetchData(%clientId,"CruRACE")];
 		%a += GetBonus(%clientId,$BPMAXHP);
 		%a = %a * (1 + (GetBonus(%clientId,$BPHEALTH) / 100));
-		%a += floor(%remort * 3);
+		%a += floor(%remort * 8);
 		%val = 0;
 		if ((%mh = GetBonus(%clientId,$BPMANAHEALTH)) > 0) {
 			%x = 8;
@@ -114,7 +114,7 @@ function fetchData(%clientId,%type)
 		%a *= $RaceManaMulti[fetchData(%clientId,"CruRACE")];
 		%a += GetBonus(%clientId,$BPMAXMANA);
 		%a = %a * (1 + (GetBonus(%clientId,$BPMANA) / 100));
-		%a += floor(%remort * 3);
+		%a += floor(%remort * 8);
 		%val = 0;
 		if ((%mh = GetBonus(%clientId,$BPHEALTHMANA)) > 0) {
 			%x = 8;
@@ -830,7 +830,8 @@ function fetchStat(%id,%type)
 
 function ViewStats(%clientId,%stats)
 {
-	echo("VIEWSTATS " @ %clientId @ " " @ %stats);
+	//echo("VIEWSTATS " @ %clientId @ " " @ %stats);
+	%lvl = fetchData(%clientId,"LVL");
 	if (%stats == "") %stats = 1;
 	%msg = "";
 	if (%stats == 1) {
@@ -839,8 +840,16 @@ function ViewStats(%clientId,%stats)
 		%msg = %msg @ "<jl><f1>Attack Rating: <f0>" @ GetTempATK(%clientId) @ "\n";
 		%msg = %msg @ "<f1>Health: <f0>" @ fetchData(%clientId, "HP") @ " / " @ fetchData(%clientId, "MaxHP") @ "\n";
 		%msg = %msg @ "<f1>Mana: <f0>" @ fetchData(%clientId, "MANA") @ " / " @ fetchData(%clientId, "MaxMANA") @ "\n";
-		%msg = %msg @ "<f1>Experience: <f0>" @ fetchData(%clientId,"EXP") @ "\n";
-            	%msg = %msg @ "<f1>EXP Needed: <f0>" @ GetExpTnl(%clientId) @ "\n";
+		//------------------------------------------------------------------------------------------------------------------
+		if (%lvl < 230) {
+			%msg = %msg @ "<f1>Experience: <f0>" @ fetchData(%clientId,"EXP") @ "\n";
+			%msg = %msg @ "<f1>EXP Needed: <f0>" @ GetExpTnl(%clientId) @ "\n";
+		}
+		else {
+			%msg = %msg @ "<f1>Arcane Experience: <f0>" @ fetchData(%clientId,"AEXP") @ "\n";
+			%msg = %msg @ "<f1>Arcane EXP Needed: <f0>" @ GetAExpTnl(%clientId) @ "\n";
+		}
+		//------------------------------------------------------------------------------------------------------------------
 		%msg = %msg @ "<f1>Coins: <f0>" @ fetchData(%clientId, "COINS") @ "\n";
 		%msg = %msg @ "<f1>Bank: <f0>" @ fetchData(%clientId, "BANK") @ "\n";
 		%msg = %msg @ "<f1>Armor Weight: <f0>" @ GetWeight(%clientId) @ " / " @ fetchData(%clientId, "MaxWeight") @ " (" @ FormatDecimal(WeightPenalty(%clientId),2) @ "%) \n";

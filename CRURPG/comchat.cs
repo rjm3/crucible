@@ -982,9 +982,31 @@ function CrucibleAdmin(%TrueClientId,%message)
 			if (floor(%id.adminLevel) > floor(%clientToServerAdminLevel) && Client::getName(%id) != %senderName)
 				Client::sendMessage(%TrueClientId, 0, "Could not process command: Target admin clearance level too high.");
 			else if (%id != -1) {
-	                       	StoreData(%id,"LVL",%c2);
+	            StoreData(%id,"LVL",%c2);
 				StoreData(%id,"EXP",0);
-	                        Client::sendMessage(%TrueClientId, 0, "Setting " @ Client::GetName(%id) @ " to Level: " @ %c2);
+	            Client::sendMessage(%TrueClientId, 0, "Setting " @ Client::GetName(%id) @ " to Level: " @ %c2);
+				refreshAll(%id);
+			}
+			else
+				Client::sendMessage(%TrueClientId, 0, "Invalid player name.");
+		}
+		return;
+	}
+	//------------------------------------------------------------------------------------------------------------------
+	if (%w1 == "#addexp") {
+		if (%clientToServerAdminLevel >= 5) {
+			%c2 = Cap(GetWord(%cropped,1),0,999999);
+			%name = GetWord(%cropped,0);
+			%id = NEWgetClientByName(%name);
+			if (floor(%id.adminLevel) > floor(%clientToServerAdminLevel) && Client::getName(%id) != %senderName)
+				Client::sendMessage(%TrueClientId, 0, "Could not process command: Target admin clearance level too high.");
+			else if (%id != -1) {
+				%lvl = fetchData(%id,"LVL");
+				if (%lvl < 230)
+					storeData(%id,"EXP",%c2,"inc");
+				else
+					storeData(%id,"AEXP",%c2,"inc");
+	            Client::sendMessage(%TrueClientId, 0, "Adding " @ %c2 @ " EXP to " @ Client::GetName(%id));
 				refreshAll(%id);
 			}
 			else

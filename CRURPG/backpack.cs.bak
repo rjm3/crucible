@@ -1,4 +1,5 @@
 // BACKPACK
+exec(comchat);
 exec(testcom);
 exec(loot);
 exec(passives);
@@ -308,6 +309,9 @@ function GetBonus(%id,%i)
 	%b = $PlayerBonus[%id,%i];
 	%ai = Player::isAiControlled(Client::GetOwnedObject(%id));
 	if (%i == $BPADDALLOFF || %i == $BPADDALLDEF) {
+		%b += fetchData(%id,"RemortStep");
+	}
+	if (%i == $BPMAGICFIND || %i == $BPGOLDFIND || %i == $BPADDEXP) {
 		%b += fetchData(%id,"RemortStep");
 	}
 	if (%i == $BPPHYSBASE || %i == $BPRANGEDBASE) {
