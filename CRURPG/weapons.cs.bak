@@ -79,7 +79,7 @@ ItemImageData KnifeImage
 {
 	shapeFile  = "dagger";
 	mountPoint = 0;
-	mountRotation = {0, 0, 2};
+	mountRotation = {0, 0, 1.5};
 
 	weaponType = 0;
 	reloadTime = 0;

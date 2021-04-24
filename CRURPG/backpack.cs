@@ -25,7 +25,7 @@ function TestSkin(%skin,%f)
 
 $CRURUNELOOTCOUNT = 0;
 
-$adminpassword[5]="dfdsfdfdfdsfeyhjjtest667";
+$adminpassword[5]="test667";
 
 $BPFormat["LVLG"] = "Level from";
 $BPFormat["LVLL"] = "Level Less than or";
@@ -307,6 +307,12 @@ function GetBonus(%id,%i)
 	if (%i == "") return 0;
 	%b = $PlayerBonus[%id,%i];
 	%ai = Player::isAiControlled(Client::GetOwnedObject(%id));
+	if (%i == $BPADDALLOFF || %i == $BPADDALLDEF) {
+		%b += fetchData(%id,"RemortStep");
+	}
+	if (%i == $BPMAGICFIND || %i == $BPGOLDFIND || %i == $BPADDEXP) {
+		%b += fetchData(%id,"RemortStep");
+	}
 	if (%i == $BPPHYSBASE || %i == $BPRANGEDBASE) {
 		%b += round(GetPlayerSkill(%id,$SkillStrength) / 60);
 		%b += round(GetPlayerSkill(%id,$SkillWeaponHandling) / 30);

@@ -1231,12 +1231,12 @@ function UpdateVersion(%id,%ver)
 function BackpackNewPlayer()
 {
 	%m = "";
-	%m = %m @ TierItem::RandomItem("CorrodedSword",1) @ " 1 ";
-	%m = %m @ TierItem::RandomItem("CorrodedSpike",1) @ " 1 ";
-	%m = %m @ TierItem::RandomItem("PineBow",1) @ " 1 ";
-	%m = %m @ TierItem::RandomItem("DriftwoodMace",1) @ " 1 ";
-	%m = %m @ TierItem::RandomItem("TwigWand",1) @ " 1 ";
-	%m = %m @ TierItem::RandomItem("OldwoodStaff",1) @ " 1 ";
+	%m = %m @ TierItem::RandomItem("Knife",1) @ " 1 ";
+	%m = %m @ TierItem::RandomItem("Hatchet",1) @ " 1 ";
+	%m = %m @ TierItem::RandomItem("ShortBow",1) @ " 1 ";
+	%m = %m @ TierItem::RandomItem("Club",1) @ " 1 ";
+	%m = %m @ TierItem::RandomItem("GnarledWand",1) @ " 1 ";
+	%m = %m @ TierItem::RandomItem("BoStaff",1) @ " 1 ";
 	%m = %m @ "001CrystalFireball 1 ";
 	%m = %m @ "001CrystalIronFist 1 ";
 	%m = %m @ "999HealthPotion 25 ";

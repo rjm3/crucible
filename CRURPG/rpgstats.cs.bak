@@ -54,7 +54,7 @@ function fetchData(%clientId,%type)
 		%a *= $RaceHPMulti[fetchData(%clientId,"CruRACE")];
 		%a += GetBonus(%clientId,$BPMAXHP);
 		%a = %a * (1 + (GetBonus(%clientId,$BPHEALTH) / 100));
-		%a += floor(%remort * 8);
+		%a += floor(%remort * 3);
 		%val = 0;
 		if ((%mh = GetBonus(%clientId,$BPMANAHEALTH)) > 0) {
 			%x = 8;
@@ -114,7 +114,7 @@ function fetchData(%clientId,%type)
 		%a *= $RaceManaMulti[fetchData(%clientId,"CruRACE")];
 		%a += GetBonus(%clientId,$BPMAXMANA);
 		%a = %a * (1 + (GetBonus(%clientId,$BPMANA) / 100));
-		%a += floor(%remort * 8);
+		%a += floor(%remort * 3);
 		%val = 0;
 		if ((%mh = GetBonus(%clientId,$BPHEALTHMANA)) > 0) {
 			%x = 8;

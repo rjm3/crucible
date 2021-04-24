@@ -166,7 +166,7 @@ function CreateMerchantLoot(%merchant,%type,%count,%mf,%min,%max)
 		%loot = %loot @ %w;
 		%w = TierItem::RandomItem("PineBow",1) @ " 1 ";
 		%loot = %loot @ %w;
-		%w = TierItem::RandomItem("OldwoodStaff",1) @ " 1 ";
+		%w = TierItem::RandomItem("CorrodedSword",1) @ " 1 ";
 		%loot = %loot @ %w;
 	}
 	%mf = 1 + (%mf / 100);

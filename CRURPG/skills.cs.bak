@@ -569,8 +569,7 @@ function GetPlayerAbility(%id,%a)
 		%m = 100 - $RESTIMER[%id];
 		%ret *= (%m / 100);
 	}
-	%remort = fetchData(%id,"RemortStep");
-	return round(%ret + %arcane + %remort);
+	return round(%ret + %arcane);
 }
 
 $MultiToArcane[1.20] = 8;
