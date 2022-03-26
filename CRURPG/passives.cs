@@ -562,7 +562,7 @@ PassiveCreate("Mana Meshing","","MANAHEALTH 10",10,"M");
 PassiveCreate("Health Meshing","","HEALTHMANA 10",10,"M");
 PassiveCreate("Red Magic","","BLOODMAGIC 20",20,"M","BLOODMAGIC 10");
 PassiveCreate("Blue Blood","","DAMAGEMANA 20",20,"M","DAMAGEMANA 10");
-PassiveCreate("Necromancer","","MINIONHEALTH 40 MINIONDAMAGE 40",20,"M","MINIONHEALTH 10 MINIONDAMAGE 10");
+PassiveCreate("Necromancer","","MINIONHEALTH 40 MINIONDAMAGE 40",20,"M","MINIONHEALTH 10 MINIONDAMAGE 10 MAXMINIONS 1");
 PassiveCreate("Ignore","","SPELLINTURUPT 10",10,"M","SPELLINTURUPT 5");
 PassiveCreate("Primalistic","PRIMALMAGIC 575","",20,"M");
 PassiveCreate("Divine","HOLYMAGIC 575","",20,"M");

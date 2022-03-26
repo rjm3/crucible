@@ -1,6 +1,7 @@
 $CREATETIERNOFLUX["CRITDAMAGE"] = 1;
 $CREATETIERNOFLUX["CRITCHANCE"] = 1;
 $CREATETIERNOFLUX["SPELLCRIT"] = 1;
+$CREATETIERNOFLUX["MINIONDAMAGE"] = 1;
 
 function CreateTierWeapons(%plan,%name,%material,%damage,%perc,%damageflux,%damagetype,%main,%implicit,%critchance,%critdamage,%req,%x,%atk,%def,%ico,%delay,%twohand,%desc,%loot,%cl)
 {
@@ -368,6 +369,11 @@ CreateTierWeapons(4,"Cedar Staff","Smithing",242,0.8,0.3,"Melee","CRITDAMAGE",75
 CreateTierWeapons(5,"Ivory Staff","Smithing",242,0.9,0.3,"Melee","CRITDAMAGE",75,5,30,"MartialArts","WPN","MartialArts","EvadeMelee","ico_ivorystaff.bmp",0.5,1,"",4);
 CreateTierWeapons(6,"Shadewood Staff","Smithing",242,1.0,0.3,"Melee","CRITDAMAGE",75,5,30,"MartialArts","WPN","MartialArts","EvadeMelee","ico_shadewoodstaff.bmp",0.5,1,"",5);
 
+//##############################################################################################################################################
+// CYNOSURES:  CYNOARJUNA CYNOSABNOCK CYNOBELPHEGOR CYNOVALAC CYNODAHAKA
+$WEAPONNAMES["Arjuna"] = "Dusty Splintered Split Fractured Hardwood Dense";
+$WEAPONVIS["Arjuna"] = "CYNOARJUNA CYNOARJUNA CYNOARJUNA CYNOARJUNA CYNOARJUNA CYNOARJUNA CYNOARJUNA";
+CreateTierWeapons(2,"Arjuna","Crafting",544,0.5,0.5,"Spell","MINIONDAMAGE",50,10,15,"Focus","CYN","Focus","SpellResist","ico_.bmp",1,0,"",1,"Wand");
 
 function FullTestWeapons()
 {
@@ -387,8 +393,10 @@ function FullTestWeapons()
 function TestWeapons()
 {
 	$PlayerBackpack[2049] = "";
-	%weapon = TierItem::RandomItem("KnottedGreatStaff",10);
-	$PlayerBackpack[2049] = $PlayerBackpack[2049] @ %weapon @ " 1 ";
+	for (%i = 0; %i <= 16; %i++) {
+		%weapon = TierItem::RandomItem("Arjuna",10);
+		$PlayerBackpack[2049] = $PlayerBackpack[2049] @ %weapon @ " 1 ";
+	}
 }
 
 echo("__TIER_BASICWEAPONS LOADED");

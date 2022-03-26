@@ -1322,12 +1322,18 @@ function Player::WeaponAttack(%id,%special,%ranged,%proj,%boost)
 	PlaySound(%sound,%targetPos);
 	// --------------------------------------------------------------------------------
 	// MESSAGE
+	%msgId = %id;
+	//if (Player::isAiControlled(Client::GetOwnedObject(%id))) {
+	//	echo(" IS AI ");
+	//	%msgId = $CruAI[%id,$AiOwner];
+	//	echo(" MSG ID " @ %msgid);
+	//}
 	if (!%shieldhit) {
-		rpg::SendMessage(%id,$MsgOrange,"You" @ %presanction @ "" @ %sanction @ " " @ client::GetName(%target) @ " for " @ %value @ " points of " @ $Damagemsg[%damageType] @ " damage!");
+		rpg::SendMessage(%msgId,$MsgOrange,"You" @ %presanction @ "" @ %sanction @ " " @ client::GetName(%target) @ " for " @ %value @ " points of " @ $Damagemsg[%damageType] @ " damage!");
 		rpg::SendMessage(%target,1,Client::GetName(%id) @ %presanction @ "" @ %sanction @ " you for " @ %value @ " points of " @ $Damagemsg[%damageType] @ " damage!");
 	}
 	else {
-		rpg::SendMessage(%id,$MsgOrange,"You" @ %presanction @ "" @ %sanction @ " " @ client::GetName(%target) @ "'s shield for " @ %value @ " points of " @ $Damagemsg[%damageType] @ " damage!");
+		rpg::SendMessage(%msgId,$MsgOrange,"You" @ %presanction @ "" @ %sanction @ " " @ client::GetName(%target) @ "'s shield for " @ %value @ " points of " @ $Damagemsg[%damageType] @ " damage!");
 		rpg::SendMessage(%target,$MsgRed,Client::GetName(%id) @ %presanction @ "" @ %sanction @ " your shield for " @ %value @ " points of " @ $Damagemsg[%damageType] @ " damage!");
 	}
 	// --------------------------------------------------------------------------------
@@ -2570,12 +2576,16 @@ function Player::AutoWeapon(%id,%target,%boost,%magic)
 	PlaySound(%sound,%targetPos);
 	// --------------------------------------------------------------------------------
 	// MESSAGE
+	%msgId = %id;
+	//if (Player::isAiControlled(Client::GetOwnedObject(%id))) {
+	//	%msgId = $CruAI[%id,$AiOwner];
+	//}
 	if (!%shieldhit) {
-		rpg::SendMessage(%id,$msgorange,"You" @ %presanction @ "" @ %sanction @ " " @ client::GetName(%target) @ " for " @ %value @ " points of " @ $Damagemsg[%damageType] @ " damage!");
+		rpg::SendMessage(%msgId,$msgorange,"You" @ %presanction @ "" @ %sanction @ " " @ client::GetName(%target) @ " for " @ %value @ " points of " @ $Damagemsg[%damageType] @ " damage!");
 		rpg::SendMessage(%target,$msgred,Client::GetName(%id) @ %presanction @ "" @ %sanction @ " you for " @ %value @ " points of " @ $Damagemsg[%damageType] @ " damage!");
 	}
 	else {
-		rpg::SendMessage(%id,$msgorange,"You" @ %presanction @ "" @ %sanction @ " " @ client::GetName(%target) @ "'s shield for " @ %value @ " points of " @ $Damagemsg[%damageType] @ " damage!");
+		rpg::SendMessage(%msgId,$msgorange,"You" @ %presanction @ "" @ %sanction @ " " @ client::GetName(%target) @ "'s shield for " @ %value @ " points of " @ $Damagemsg[%damageType] @ " damage!");
 		rpg::SendMessage(%target,$msgred,Client::GetName(%id) @ %presanction @ "" @ %sanction @ " your shield for " @ %value @ " points of " @ $Damagemsg[%damageType] @ " damage!");
 	}
 	// --------------------------------------------------------------------------------

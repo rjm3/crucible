@@ -39,7 +39,7 @@ String::getWord(%str, %seperator, %word);
 
 String::LCS(%str1, %str2, [%ignoreCase]);
 
-getWordCount(%str)
+getWordCount(%str, [%sep]) //%sep must be only 1 character long, but is optional (space is considered the default if %sep is not given)
 
 String::offset(%str, %offset); (500x faster than a Tribes implementation, this offset text by a certain amount)
 String::ReverseHexTranslation(%str); (Should revert mostly back to readable text...not recommended for server side stuff)
@@ -53,11 +53,14 @@ String::RemoveWords(%str, %words); (Returns %str with the %words removed, trunca
 
 String::Shuffle(%str); (Returns a string of the shuffled words)
 
-Word::FindWord(%str, %find)
+Word::FindWord(%str, %find, [%sep])
 	This will return the word # (eg. word::findword("zero one two", one) = 1)
+	%sep is optional, if it is not included a space will be used.  %sep must have length 1
+	*Fixed, as previous version didn't bother to account for additional characters (Reported by Phantom)
 
-Word::getSubWord(%str, %begWordIndex, %length)
+Word::getSubWord(%str, %begWordIndex, %length, [%sep])
 	This will return the string starting from %begWordIndex and continue for %length (much like string::getsubstr except with words)
+	%sep is optional, if it is not included a space will be used.  %sep must have length 1
 
 File::OpenFile(%path, %append) (restricted to temp,recordings,config, base/missions)
 	If you use this you must call CloseFile or else the file will be locked up.  You can only open one file at a time.

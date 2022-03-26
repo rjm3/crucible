@@ -213,4 +213,11 @@ Take More Crit		TTC	TAKECRIT	206	/	/	/	/	75
 Take More Crit Damage	TTD	TAKECRITDAMAGE	207	/	/	/	/	75
 Take More Phys Damage	TTP	TAKEPHYSDAMAGE	208	/	/	/	/	500
 Max Cooldown		MXC	MAXCOOLDOWN	209	/	/	/	/	90
+#######################################################################################################################################
+Minion Accuracy			MINIONACCURACY
+Minion Level			MINIONLEVEL
+Minion Armor			MINIONARMOR
+Minion Health Regen		MINIONREGEN
+Minion Berserk			MINIONBERSERK
+Minion Anger			MINIONANGER
 

@@ -2771,6 +2771,7 @@ $TierLoc["Weapon"] 	= "weapon";
 $TierLoc["MagicWeapon"] = "weapon";
 $TierLoc["Back"] 	= "back";
 $TierLoc["Armor"] 	= "armor";
+$TierLoc["Cynosure"] = "weapon";
 
 function getRarityPriceIncrease(%rare)
 {
@@ -3083,6 +3084,11 @@ function TierItem::RandomItem(%item,%ql,%overridep,%hardvals,%oldtier,%prevmain,
 			if (%newmulti != "") %roll = floor(%roll * %newmulti);
 			%m = "SPX" @ TierFormatValue(%roll);
 		}
+		else if (%main == "MINIONDAMAGE") {
+			%roll = TierItem::GetWeaponImplicit(%item,%ql,%tiermulti,%min,%max);
+			if (%newmulti != "") %roll = floor(%roll * %newmulti);
+			%m = "MMM" @ TierFormatValue(%roll);
+		}
 		else {
 			%minval = getWord(%main,1);
 			%maxval = getWord(%main,2);
@@ -3375,7 +3381,7 @@ function TierItem::Create(%new,%slot)
 		%radd = floor(floor(floor((%rmax * 1.0) * %perc) * (%ql / 300)) + 0);
 		%rlist = %rlist @ %wreq @ " " @ %radd @ " ";
 	}
-	if (%sreq == "STF") {
+	if (%sreq == "STF" || %sreq == "CYN") {
 		%rlist = "";
 		%perc = $DynamicItem[%name,$DWeaponPerc];
 		%wreq = $DynamicItem[%name,$DWeaponReq];
@@ -3502,7 +3508,7 @@ function TierItem::Create(%new,%slot)
 	}
 	//===============================================================================
 	// MAGICWEAPON
-	if (%sreq == "STF") {
+	if (%sreq == "STF" || %sreq == "CYN") {
 		%wperc = (%ql / 300);
 		%perc = (%tperc / 100) + 1;
 		%mag = round($DynamicItem[%name,$DWeaponMagDmg] * %wperc);

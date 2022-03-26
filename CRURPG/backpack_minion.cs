@@ -146,8 +146,24 @@ function CruAiSetPetTarget(%id,%aiId)
 	Client::SendMessage(%id,2,client::GetName(%aiId) @ " is now attacking " @ client::GetName(%target) @ "!");
 }
 
+function CruAiRandomWalk(%aiId)
+{
+	%pos = gameBase::GetPosition(%aiId);
+	%moveto = %pos;
+	%x = getWord(%pos, 0);
+	%y = getWord(%pos, 1);
+	%z = getWord(%pos, 2);
+	if (MTRB(1, 8) == 1) {
+		%x += MTRB(-4,4);
+		%y += MTRB(-4,4);
+		%z = %z;
+	}
+	return %x @ " " @ %y @ " " @ %z;
+}
+
 function CruAiPeriodic(%ainame)
 {
+	//echo("CruAIPeriodic " @ %ainame);
 	%aiId = AI::getId(%aiName);
 	%mode = $CruAI[%aiId,$AiMode];
 	%owner = $CruAI[%aiId,$AiOwner];
@@ -161,14 +177,20 @@ function CruAiPeriodic(%ainame)
 	if (%mode == $AiHunt) {
 		if ($CruAI[%aiId,$AiTargetGet] == "") {
 			player::trigger(%aiId,0,0);
-			Targeting::Obtain(%aiId,50,True,0);
+			Targeting::Obtain(%aiId,100,True,0);
 			%targets = $TargetTemp[%aiId,0];
+			%targets = string::shuffle(%targets);
+			$TARGETINGAREA[%aiId] = $TARGETINGAREA[%owner];
 			if ((%t = GetWord(%targets,0)) != -1) {
 				$CruAI[%aiId,$AiTargetGet] = %t;
 				$TargetCur[%aiId,0] = %t;
 				$CruAI[%aiId,$AiPrev] = $AiHunt;
 				$CruAI[%aiId,$AiMode] = $AiTarget;
-			}	
+			}
+			else {
+				%moveTo = CruAiRandomWalk(%aiId);
+				AI::DirectiveWaypoint(%aiName,%moveTo,99);
+			}
 		}
 	}
 	if (%mode == $AiTarget) {

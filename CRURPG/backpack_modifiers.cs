@@ -955,6 +955,14 @@ function AddToCommonTier(%mod,%vars,%types,%rune,%multi)
 			$BPTIERNUM["WEAPON","STF",%mod] = %c;
 			if (%rune != "") AddRune(%rune,%mod,%v,"MagicWeapon");
 		}
+		if (TierIsType(%types,"CYN") != -1) {
+			$COUNTWEAPON[CYN]++;
+			%c = $COUNTWEAPON[CYN];
+			$BPTIERVAR["WEAPON","CYN",%c] = $BPCODE[%mod];
+			$BPTIERVAL["WEAPON","CYN",%c] = %v;
+			$BPTIERNUM["WEAPON","CYN",%mod] = %c;
+			if (%rune != "") AddRune(%rune,%mod,%v,"Cynosure");
+		}
 	}
 	// SHIELD ======================================
 	%v = getWord(%vars,12);
@@ -3428,6 +3436,7 @@ $BPMOD["MXX"] = "MAXMINIONS";
 $BPMAX["MAXMINIONS"] = 0;
 $TierReq["MAXMINIONS"] = $ReqInt;
 $TierReqP["MAXMINIONS"] = 1;
+$BPNoFlux["MAXMINIONS"] = 1;
 
 $BPTAKECRIT = $BPMODCOUNT++;
 $BPBonusToNumeric["TAKECRIT"] = $BPTAKECRIT;
@@ -3835,12 +3844,12 @@ $super = 1.0;
 AddToCommonTier("CRITDAMAGE","25 5 0 0 25 0 0 0 0 0 0 50 75 0 0 0","DYN EVA QUV ","Force",$double);
 AddToCommonTier("CRITCHANCE","25 5 0 0 25 0 0 0 0 0 0 50 50 0 0 0","DYN EVA QUV ","Puncturing",$double);
 AddToCommonTier("LIFESTEAL","0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Bloodshed");
-AddToCommonTier("ADDALLOFF","0 12 0 0 0 0 0 0 25 0 0 50 50 0 0 0","DYN AMR RES EVA WPN STF QUV ","Ravaging",$double);
+AddToCommonTier("ADDALLOFF","0 12 0 0 0 0 0 0 25 0 0 50 50 0 0 0","DYN AMR RES EVA WPN STF CYN QUV ","Ravaging",$double);
 AddToCommonTier("ADDALLDEF","0 5 0 0 0 25 25 25 0 0 0 0 25 0 0 25","DYN AMR RES EVA SPS ","Rampart",$double);
 AddToCommonTier("MAXMANA","0 50 800 0 0 0 0 0 500 0 0 0 0 0 0 500","DYN RES ","Mana",$double);
 AddToCommonTier("MAXHP","0 50 0 800 0 200 200 200 0 0 0 0 100 0 0 500","DYN AMR MES ","Health",$double);
 AddToCommonTier("ARMORPEN","1000 150 0 0 700 0 0 0 0 0 0 2500 1750 0 0 0","DYN WPN QUV ","Precision",$double);
-AddToCommonTier("MAGICPEN","0 150 0 0 700 0 0 0 1000 0 0 2500 0 0 0 0","DYN RES STF ","Emptiness",$double);
+AddToCommonTier("MAGICPEN","0 150 0 0 700 0 0 0 1000 0 0 2500 0 0 0 0","DYN RES STF CYN ","Emptiness",$double);
 AddToCommonTier("ARMOR","0 50 200 400 200 200 100 100 0 0 0 0 400 0 0 400","DYN AMR EVA MES ","Armor");
 AddToCommonTier("MELEEAC","0 0 100 200 100 100 100 0 0 0 0 0 200 0 0 200","AMR EVA MES ","Plating");
 AddToCommonTier("PROJAC","0 0 100 200 100 100 100 0 0 0 0 0 200 0 0 200","AMR EVA MES ","Proof");
@@ -3862,8 +3871,8 @@ AddToCommonTier("MAXWEIGHT","0 50 0 0 0 500 500 0 0 0 0 0 0 0 0 0","DYN AMR EVA 
 AddToCommonTier("HEALDELTA","0 10 0 0 0 50 50 50 0 0 0 0 50 0 0 50","DYN AMR EVA MES ","Regeneration",$double);
 AddToCommonTier("MANADELTA","0 20 0 0 0 0 0 0 150 0 0 0 0 0 0 100","DYN RES EVA ","Energizing",$double);
 AddToCommonTier("REFLECT","0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Thorns");
-AddToCommonTier("ADDDAMAGE","100 25 0 0 0 0 0 0 100 0 0 200 50 0 0 0","DYN WPN STF QUV ","Damage",$double);
-AddToCommonTier("MAGICDAMAGE","0 4 20 0 0 0 0 0 20 0 0 100 0 0 0 20","DYN RES EVA STF ","Casting",$super);
+AddToCommonTier("ADDDAMAGE","100 25 0 0 0 0 0 0 100 0 0 200 50 0 0 0","DYN WPN STF CYN QUV ","Damage",$double);
+AddToCommonTier("MAGICDAMAGE","0 4 20 0 0 0 0 0 20 0 0 100 0 0 0 20","DYN RES EVA STF CYN ","Casting",$super);
 AddToCommonTier("PHYSICALDAMAGE","10 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Warzone",$double);
 AddToCommonTier("SLASHING","250 38 0 0 250 0 0 0 0 0 0 0 0 0 0 0","DYN AMR ","Slashing",$double);
 AddToCommonTier("PIERCING","250 38 0 0 250 0 0 0 0 0 0 0 0 0 0 0","DYN AMR EVA ","Piercing",$double);
@@ -3912,16 +3921,16 @@ AddToCommonTier("BLOCKHIT%","0 2 0 0 0 0 0 0 0 0 0 0 10 0 0 0","DYN MES ","Block
 AddToCommonTier("BLOCKSPELL%","0 2 0 0 0 0 0 0 0 0 0 0 10 0 0 0","DYN SPS ","Inhibiting",$double);
 AddToCommonTier("HEALTH%","0 5 0 20 0 10 10 35 0 0 0 0 0 0 0 0","DYN AMR ","Goliaths",$double);
 AddToCommonTier("MANA%","0 5 20 20 0 0 0 0 35 0 0 0 0 0 0 0","DYN RES ","Leaves",$double);
-AddToCommonTier("DAMAGEDEMON","0 2 0 0 0 0 0 0 0 0 0 10 0 0 0 0","DYN WPN STF ","Angels");
-AddToCommonTier("DAMAGEUNDEAD","0 2 0 0 0 0 0 0 0 0 0 10 0 0 0 0","DYN WPN STF ","Living");
-AddToCommonTier("DAMAGEBEAST","0 2 0 0 0 0 0 0 0 0 0 10 0 0 0 0","DYN WPN STF ","Hunting");
-AddToCommonTier("DAMAGEELITE","0 2 0 0 0 0 0 0 0 0 0 10 0 0 0 0","DYN WPN STF ","Captains");
-AddToCommonTier("DAMAGEBOSS","0 2 0 0 0 0 0 0 0 0 0 10 0 0 0 0","DYN WPN STF ","Guardians");
+AddToCommonTier("DAMAGEDEMON","0 2 0 0 0 0 0 0 0 0 0 10 0 0 0 0","DYN WPN STF CYN ","Angels");
+AddToCommonTier("DAMAGEUNDEAD","0 2 0 0 0 0 0 0 0 0 0 10 0 0 0 0","DYN WPN STF CYN ","Living");
+AddToCommonTier("DAMAGEBEAST","0 2 0 0 0 0 0 0 0 0 0 10 0 0 0 0","DYN WPN STF CYN ","Hunting");
+AddToCommonTier("DAMAGEELITE","0 2 0 0 0 0 0 0 0 0 0 10 0 0 0 0","DYN WPN STF CYN ","Captains");
+AddToCommonTier("DAMAGEBOSS","0 2 0 0 0 0 0 0 0 0 0 10 0 0 0 0","DYN WPN STF CYN ","Guardians");
 AddToCommonTier("INCDAMAGE%","0 0 0 0 0 0 0 0 0 0 0 100 0 0 0 0","DYN WPN ","Sharpening",$super);
 AddToCommonTier("MINDAMAGE","0 2 0 0 0 0 0 0 0 0 0 30 0 0 0 0","DYN WPN ","Edges",$double);
 AddToCommonTier("MAXDAMAGE","0 4 0 0 0 0 0 0 0 0 0 70 0 0 0 0","DYN WPN ","Honing",$double);
-AddToCommonTier("MINIONHEALTH","0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Necromancing");
-AddToCommonTier("MINIONDAMAGE","0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Occultist");
+AddToCommonTier("MINIONHEALTH","0 5 0 0 0 0 0 0 0 0 0 50 0 0 0 0","DYN CYN ","Necromancing");
+AddToCommonTier("MINIONDAMAGE","0 5 0 0 0 0 0 0 0 0 0 50 0 0 0 0","DYN CYN ","Occultist");
 AddToCommonTier("MAXMEMORY","0 25 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Cognizance");
 AddToCommonTier("PROJDAMAGE%","0 25 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Poke",$super);
 AddToCommonTier("FIREDAMAGE%","0 25 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Sizzling",$super);
@@ -3936,7 +3945,7 @@ AddToCommonTier("AVOIDPOISON","0 2 0 10 0 0 0 10 0 0 0 0 0 0 0 0","DYN AMR RES E
 AddToCommonTier("AVOIDSHOCK","0 2 0 10 0 0 0 10 0 0 0 0 0 0 0 0","DYN AMR RES EVA ","Static");
 AddToCommonTier("AVOIDCRIT","0 2 0 0 0 10 0 10 0 0 0 0 0 0 0 0","DYN AMR RES EVA ","Rigor");
 AddToCommonTier("WEAPONRANGE","10 2 0 0 20 0 0 0 0 0 0 20 0 0 0 0","DYN AMR EVA WPN ","Thrust");
-AddToCommonTier("CASTRANGE","0 2 0 0 10 0 0 0 10 0 0 20 0 0 0 0","DYN RES STF ","Extending");
+AddToCommonTier("CASTRANGE","0 2 0 0 10 0 0 0 10 0 0 20 0 0 0 0","DYN RES STF CYN ","Extending");
 AddToCommonTier("HEALING%","0 2 0 0 0 0 0 30 0 0 0 0 0 0 0 0","DYN ","Tonic");
 AddToCommonTier("INCSTUN","0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Daze");
 AddToCommonTier("INCROOT","0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Bushes");
@@ -3953,7 +3962,7 @@ AddToCommonTier("WANDMAGIC","0 2 10 0 0 0 0 0 10 0 0 10 0 0 0 0","DYN RES ","Ark
 AddToCommonTier("UNDEADPROT","0 2 0 0 0 0 0 5 0 0 0 0 5 0 0 0","DYN MES SPS ","Zombies");
 AddToCommonTier("DEMONPROT","0 2 0 0 0 0 0 5 0 0 0 0 5 0 0 0","DYN MES SPS ","Demons");
 AddToCommonTier("BEASTPROT","0 2 0 0 0 0 0 5 0 0 0 0 5 0 0 0","DYN MES SPS ","Animals");
-AddToCommonTier("BERSERK","5 2 0 0 0 0 0 0 0 0 0 5 0 0 0 0","DYN WPN STF ","Berserking");
+AddToCommonTier("BERSERK","5 2 0 0 0 0 0 0 0 0 0 5 0 0 0 0","DYN WPN STF CYN ","Berserking");
 AddToCommonTier("HEALTHPOTION","0 2 0 0 0 0 0 30 0 0 0 0 0 0 0 0","DYN ","Drinks");
 AddToCommonTier("MANAPOTION","0 2 0 0 0 0 0 0 30 0 0 0 0 0 0 0","DYN ","Refreshment");
 AddToCommonTier("RIPOSTE","75 38 0 0 150 100 0 0 0 0 0 0 100 0 0 0","DYN AMR EVA MES ","Parry");
@@ -3970,7 +3979,7 @@ AddToCommonTier("HEALTHDAMAGE","0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Netting
 AddToCommonTier("MANAMAGIC","0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Lattice");
 AddToCommonTier("DAMAGEMANA","0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Exchange");
 AddToCommonTier("BLOODMAGIC","0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Lifeblood");
-AddToCommonTier("SPELLCRIT","0 5 0 0 0 0 0 0 50 0 0 50 0 0 0 0","DYN STF ","Warlocks",$super);
+AddToCommonTier("SPELLCRIT","0 5 0 0 0 0 0 0 50 0 0 50 0 0 0 0","DYN STF CYN ","Warlocks",$super);
 AddToCommonTier("AVOIDSPCRIT","0 2 0 0 0 0 0 15 0 0 0 0 0 0 0 0","DYN ","Avoidance");
 AddToCommonTier("EVASION","0 50 200 200 200 400 400 100 0 0 0 0 0 0 0 600","DYN AMR EVA ","Evasion",$super);
 AddToCommonTier("SPELLVAMP","0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Vampires");
@@ -3981,8 +3990,8 @@ AddToCommonTier("SPLBLOCKREC","0 2 0 0 0 0 0 10 0 0 0 0 10 0 0 0","DYN ","Recupe
 AddToCommonTier("STUNRECOVER","0 2 10 0 0 0 0 10 0 0 0 0 0 0 0 0","DYN AMR RES EVA ","Dizziness");
 AddToCommonTier("SPCRITDAMAGE","0 5 10 0 0 0 0 0 50 0 0 50 0 0 0 0","DYN RES EVA ","Criticals",$super);
 AddToCommonTier("MELEETYPEDAMAGE","0 25 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Blades",$super);
-AddToCommonTier("MANACOST","0 2 0 0 0 0 0 0 10 0 0 10 0 0 0 0","DYN STF ","Reduction");
-AddToCommonTier("COOLDOWN","0 2 0 0 0 0 0 0 10 0 0 10 0 0 0 0","DYN STF ","Restarting");
+AddToCommonTier("MANACOST","0 2 0 0 0 0 0 0 10 0 0 10 0 0 0 0","DYN STF CYN ","Reduction");
+AddToCommonTier("COOLDOWN","0 2 0 0 0 0 0 0 10 0 0 10 0 0 0 0","DYN STF CYN ","Restarting");
 AddToCommonTier("SPELLBASE","0 0 75 0 0 0 0 0 75 0 0 0 0 0 0 75","DYN RES ","Hexing",$super);
 AddToCommonTier("ACCURACY","100 25 0 0 100 0 0 0 0 0 0 300 115 0 0 0","DYN AMR EVA WPN QUV ","Accuracy",$super);
 AddToCommonTier("SPELLACCURACY","0 25 100 0 0 0 0 0 100 0 0 300 0 0 0 0","DYN RES EVA ","Exactness",$super);
@@ -4002,6 +4011,13 @@ AddToCommonTier("ANGER","0 300 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Anger",$doub
 AddToCommonTier("PHYSBASE","0 10 0 0 0 0 0 0 0 0 0 0 0 0 0 0","DYN ","Harm");
 AddToCommonTier("RANGEDBASE","0 0 0 0 0 0 0 0 0 0 0 0 100 0 0 0","DYN QUV ","Bows",$super);
 AddToCommonTier("MADAMAGE","15 2 0 0 15 15 15 0 0 0 0 0 0 0 0 0","DYN AMR EVA ","Ninjas",$super);
+// CYNOSURE ONLY MODS
+AddToCommonTier("MINIONACCURACY","0 0 0 0 0 0 0 0 0 0 0 1000 0 0 0 0","CYN ","Claws");
+AddToCommonTier("MINIONLIFE","0 0 0 0 0 0 0 0 0 0 0 2500 0 0 0 0","CYN ","Death");
+AddToCommonTier("MINIONARMOR","0 0 0 0 0 0 0 0 0 0 0 5000 0 0 0 0","CYN ","Fortitude");
+AddToCommonTier("MAXMINIONS","0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0","CYN ","Horde");
+AddToCommonTier("MINIONANGER","0 0 0 0 0 0 0 0 0 0 0 3000 0 0 0 0","CYN ","Rage");
+AddToCommonTier("MINIONHEALDELTA","0 0 0 0 0 0 0 0 0 0 0 60 0 0 0 0","CYN ","Deathblood");
 
 //########################################################################################################
 
@@ -4047,6 +4063,7 @@ CreateTierList("STUDY","RES");
 CreateTierList("STUDY","DYN");
 CreateTierList("WEAPON","WPN");
 CreateTierList("WEAPON","STF");
+CreateTierList("WEAPON","CYN");
 CreateTierList("SHIELD","MES");
 CreateTierList("SHIELD","SPS");
 CreateTierList("SHIELD","QUV");

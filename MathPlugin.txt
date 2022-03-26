@@ -56,6 +56,33 @@ To use this, think of the parent being at pos 0 0 0 at rot 0 0 0, place the %chi
 you want it to be (including rotation).  This point and rotation is your %relpos and %relrot
 if the parent gets rotated or position moved everything will be moved with it
 
+Gamebase::getRelativePosRot(%position, %rotation, %relpos, %relrot)
+To use this, think of the the object being built around pos 0 0 0 and rot 0 0 0
+Place where the relPos and relRot where the object would be this point and rotation is your %relpos and %relrot
+Can likely use this with Rotation::rotate to get doors with correct pivot points
+
+Gamebase::getEyeTransform(%client)
+returns the same as Gamebase::getMuzzleTransform when not holding a weapon
+
+Number::Beautify(%num, [%fixDrifting], [limitingDecimal], [%sep])
+123456 turns to 123,456
+%fixDrifting is optional defaulted to 0 (false).  This will detect how many repeats there are at the end and correct the number (Negative fixes only if a decimal point exists)
+(I suggest 3 for this)...this must be 2 or higher or it will not work
+%limitingDecimal limits the output for decimal points (setting to negative value will disable this)
+%sep a 1 character seperator
+//Sorry no rounding for limitingDecimal
+examples
+	Number::Beautify("1234") == "1,234"
+	Number::Beautify("1.2345678") == "1.2345678"
+	Number::Beautify("1.999999", 3) == "2"
+	Number::Beautify("199999", -3) == "199999"
+	Number::Beautify("199999", 3) == "200000"
+	Number::Beautify("1.666666", 3) == "1.66667" //Notice you lose one decimal here
+	Number::Beautify("1.666666", 3, 2) == "1.66" //The 3 converts it to 1.66667, but the 2 clips it
+	Number::Beautify("1.666666", 0, 2) == "1.66"
+	Number::Beautify("1.666666", 0, 100) == "1.666666"
+	Number::Beautify("10000.666666", 0, -1, " ") == "10 000.666666" //Replaced the , with a " "
+
 Math::isInteger( %str )
 Checks whether a number is an integer (negative or positive, no decimals)
 

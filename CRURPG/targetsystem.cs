@@ -56,6 +56,7 @@ function Targeting::Obtain(%id,%spotdist,%noselect,%friend)
 	//$TargetTemp[%id,%friend] = "^ ";
 	$TargetTemp[%id,%friend] = "";
 	%pos = Gamebase::GetPosition(%id);
+	//echo("POS " @ %pos);
 	%set = newObject("set", SimSet);
 	%n = containerBoxFillSet(%set,$SimPlayerObjectType,%pos,%spotdist,%spotdist,%spotdist,0);
 	if (%friend == 0)
@@ -70,10 +71,14 @@ function Targeting::Obtain(%id,%spotdist,%noselect,%friend)
 
 function Targeting::Add(%object,%id)
 {
+	//echo(" TARGETING::ADD " @ %object @ " " @ %id);
 	%target = player::GetClient(%object);
 	if (%target == %id)
 		return;
 	if (Targeting::LosCheck(%id,%target) == False) {
+		//echo(" LOS FINE ");
+		//echo(gamebase::GetTeam(%target));
+		//echo(gamebase::getTeam(%id));
 		if (gamebase::getTeam(%target) != gamebase::GetTeam(%id)) {
 			if (fetchData(%target, "invisible") != True)
 				$TargetTemp[%id,0] = $TargetTemp[%id,0] @ %target @ " ";

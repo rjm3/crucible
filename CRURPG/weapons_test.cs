@@ -1797,6 +1797,152 @@ ItemData UWILLMADE
 };
 
 //==============================================================================================================================================================
+// CYNOSURES
+ItemImageData CYNOARJUNAImage
+{
+	shapeFile  = "CynosureArjuna";
+	mountPoint = 0;
+
+	weaponType = 0; // Single Shot
+	reloadTime = 0;
+	fireTime = 2;
+	minEnergy = 0;
+	maxEnergy = 0;
+
+	accuFire = true;
+
+	sfxFire = SoundSwing5;
+	sfxActivate = AxeSlash2;
+};
+ItemData CYNOARJUNA
+{
+	heading = "bWeapons";
+	description = "CynosureArjuna";
+	className = "Weapon";
+	shapeFile  = "CynosureArjuna";
+	hudIcon = "club";
+	shadowDetailMask = 4;
+	imageType = CYNOARJUNAImage;
+	price = 0;
+	showWeaponBar = true;
+};
+//---------------------------------------------------------------------------------
+ItemImageData CYNOBELPHEGORImage
+{
+	shapeFile  = "CynosureBelphegor";
+	mountPoint = 0;
+
+	weaponType = 0; // Single Shot
+	reloadTime = 0;
+	fireTime = 2;
+	minEnergy = 0;
+	maxEnergy = 0;
+
+	accuFire = true;
+
+	sfxFire = SoundSwing5;
+	sfxActivate = AxeSlash2;
+};
+ItemData CYNOBELPHEGOR
+{
+	heading = "bWeapons";
+	description = "CynosureBelphegor";
+	className = "Weapon";
+	shapeFile  = "CynosureBelphegor";
+	hudIcon = "club";
+	shadowDetailMask = 4;
+	imageType = CYNOBELPHEGOREImage;
+	price = 0;
+	showWeaponBar = true;
+};
+//---------------------------------------------------------------------------------
+ItemImageData CYNODAHAKAImage
+{
+	shapeFile  = "CynosureDahaka";
+	mountPoint = 0;
+
+	weaponType = 0; // Single Shot
+	reloadTime = 0;
+	fireTime = 2;
+	minEnergy = 0;
+	maxEnergy = 0;
+
+	accuFire = true;
+
+	sfxFire = SoundSwing5;
+	sfxActivate = AxeSlash2;
+};
+ItemData CYNODAHAKA
+{
+	heading = "bWeapons";
+	description = "CynosureDahaka";
+	className = "Weapon";
+	shapeFile  = "CynosureDahaka";
+	hudIcon = "club";
+	shadowDetailMask = 4;
+	imageType = CYNODAHAKAImage;
+	price = 0;
+	showWeaponBar = true;
+};
+//---------------------------------------------------------------------------------
+ItemImageData CYNOSABNOCKImage
+{
+	shapeFile  = "CynosureSabnock";
+	mountPoint = 0;
+
+	weaponType = 0; // Single Shot
+	reloadTime = 0;
+	fireTime = 2;
+	minEnergy = 0;
+	maxEnergy = 0;
+
+	accuFire = true;
+
+	sfxFire = SoundSwing5;
+	sfxActivate = AxeSlash2;
+};
+ItemData CYNOSABNOCK
+{
+	heading = "bWeapons";
+	description = "CynosureSabnock";
+	className = "Weapon";
+	shapeFile  = "CynosureSabnock";
+	hudIcon = "club";
+	shadowDetailMask = 4;
+	imageType = CYNOSABNOCKImage;
+	price = 0;
+	showWeaponBar = true;
+};
+//---------------------------------------------------------------------------------
+ItemImageData CYNOVALACImage
+{
+	shapeFile  = "CynosureValac";
+	mountPoint = 0;
+
+	weaponType = 0; // Single Shot
+	reloadTime = 0;
+	fireTime = 2;
+	minEnergy = 0;
+	maxEnergy = 0;
+
+	accuFire = true;
+
+	sfxFire = SoundSwing5;
+	sfxActivate = AxeSlash2;
+};
+ItemData CYNOVALAC
+{
+	heading = "bWeapons";
+	description = "CynosureValac";
+	className = "Weapon";
+	shapeFile  = "CynosureValac";
+	hudIcon = "club";
+	shadowDetailMask = 4;
+	imageType = CYNOVALACImage;
+	price = 0;
+	showWeaponBar = true;
+};
+//==============================================================================================================================================================
 
 function RHATCHETImage::onFire(%player, %slot) { Player::SetupWeaponAttack(2,Player::getClient(%player)); }	
 function RBROADSWORDImage::onFire(%player, %slot) { Player::SetupWeaponAttack(2,Player::getClient(%player)); }	
@@ -1867,3 +2013,5 @@ function UCRUSHINGMINDImage::onFire(%player, %slot) { Player::MagicBasicAttack(0
 function UFROMTHEDARKImage::onFire(%player, %slot) { Player::SetupWeaponAttack(1,Player::getClient(%player)); }
 function UPLAGUEVECTORImage::onFire(%player, %slot) { Player::SetupWeaponAttack(1,Player::getClient(%player)); }
 function UWILLMADEImage::onFire(%player, %slot) { Player::MagicBasicAttack(2,Player::getClient(%player),1.0); }	
+//==================================================================================
+function CYNOARJUNAImage::onFire(%player, %slot) { Player::MagicBasicAttack(2,Player::getClient(%player)); }

@@ -33,6 +33,6 @@ function comm::SendAll(%msg)
 		comm::write(%server,%msg);
 }
 
-//comm::ReadLoop();
+comm::ReadLoop();
 
 echo("__COMMLINK LOADED");
